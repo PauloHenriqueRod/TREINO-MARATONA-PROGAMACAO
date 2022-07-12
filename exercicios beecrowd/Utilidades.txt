@@ -1,1 +1,2 @@
 função (.split()) - Ex 1015
+ex1024 = boa revisão sobre strings
