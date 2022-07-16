@@ -1,0 +1,1 @@
+casos = int(input())
