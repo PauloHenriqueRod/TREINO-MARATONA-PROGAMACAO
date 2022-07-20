@@ -1,2 +1,3 @@
 função (.split()) - Ex 1015
 ex1024 = boa revisão sobre strings
+ex1021 = Imprecisão dos números FLOAT
