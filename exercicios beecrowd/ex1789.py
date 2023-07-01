@@ -3,6 +3,7 @@ while True:
         maior = 0
         n = int(input())
         x = input().split()
+        print(x)
         for i in range(n):
             if int(x[i]) > maior:
                 maior = int(x[i])
