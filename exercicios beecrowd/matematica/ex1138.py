@@ -1,3 +1,5 @@
+# Não resolvido
+
 while True:
     num_frase = ''
     a, b = [int(n) for n in input().split()]
@@ -10,3 +12,5 @@ while True:
           f'{num_frase.count("6")} {num_frase.count("7")} {num_frase.count("8")} '
           f'{num_frase.count("9")}')
 print()
+
+# Não resolvido
