@@ -10,13 +10,13 @@ while True:
             lista.append([ent, said])
         else:
             lista = [x for x in lista if x[1] > ent]
-            try:
+            if len(lista) != 0:
                 if said > lista[len(lista)-1][1]:
                     possivel = False
                     lista.append([ent, said])
                 else:
                     lista.append([ent, said])
-            except:
+            else:
                 continue
             if len(lista) > maxs:
                 possivel = False
