@@ -10,7 +10,7 @@
 #define POS(n, x) (lower_bound(ALL(n), x) - (n).begin())
 #define ll long long
 #define ld long double
-#define pii pair<ll,int>
+#define pii pair<int,int>
 #define vi vector<int>
 #define vii vector<pii>
 #define os_type int
@@ -28,30 +28,21 @@ using namespace __gnu_pbds;
  
 #define ordered_set tree<os_type, null_type,less<os_type>, rb_tree_tag,tree_order_statistics_node_update>
  
- 
-vii fatora(ll N)
+
+
+vector<ll> get_divisores(ll N)
 {
-    vii ans;
- 
-    // O(sqrt(N))
-    for (ll i = 2; i * i <= N; i++)
+    vector<ll> divisores;
+    
+    for (ll i = 1; i * i <= N; i++)
     {
         if (N % i != 0) continue;
  
-        int qtd = 0;
+        divisores.push_back(i);
  
-        while (N % i == 0)
-        {
-            qtd++;
-            N /= i;
-        }
- 
-        ans.push_back({i, qtd});
+        if (i * i != N)
+            divisores.push_back(N / i);
     }
  
-    if (N != 1)
-        ans.push_back({N, 1});
- 
-    return ans;
+    return divisores;
 }
- 
