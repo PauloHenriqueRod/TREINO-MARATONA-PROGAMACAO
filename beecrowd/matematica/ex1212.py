@@ -1,4 +1,4 @@
-'''while True:
+while True:
     x, y = [n for n in input().split()]
     if len(x)<len(y):
         val = len(x)
@@ -6,16 +6,19 @@
         val = len(y)
     if x=='0' and y == '0':
         break
-    carrys = sum([1 for n in range(val) if (int(x[n]) + int(y[n])) > 9])
-    if len(x)<len(y):
-        if y[len(y)-len(x)] == '9' and (int(x[0]) + int(y[len(y)-len(x)])>10):
+    x = x.zfill(9)
+    y = y.zfill(9)
+    carrys = 0
+    aux = 0
+    for i in range(8, -1, -1):
+        if int(x[i]) + int(y[i]) + aux > 9:
             carrys += 1
-    if len(y)>len(x):
-
+            aux = 1
+        else:
+            aux = 0
     if carrys == 0:
         print('No carry operation.')
     elif carrys == 1:
         print('1 carry operation.')
     else:
         print(f'{carrys} carry operations.')
-'''

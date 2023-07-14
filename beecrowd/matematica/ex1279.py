@@ -17,6 +17,6 @@ while True:
             print('This is bulukulu festival year.')
             aux += 1
         if aux == 0:
-            print('This is an ordinary year.')q
+            print('This is an ordinary year.')
     except EOFError:
         break
