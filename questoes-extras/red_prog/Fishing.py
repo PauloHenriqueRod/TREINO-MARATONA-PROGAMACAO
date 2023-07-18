@@ -5,7 +5,7 @@ def range_y(y1,s):
     return y1+s
 
 
-def teste(s, cords, xis, yps):
+def solve(s, cords, xis, yps):
     max = 0
     for x in range(xis):
         rangedox = range_x(x1=x, s=s)
@@ -28,6 +28,6 @@ for i in range(n):
         continue
     cordenadas.append([x, y])
 
-print(teste(s=s, cords=cordenadas, xis=100, yps=100))
+print(solve(s=s, cords=cordenadas, xis=100, yps=100))
 
 
