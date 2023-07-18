@@ -11,7 +11,4 @@ def fatorial(n, cache={}):
     return result
 
 
-class Solution:
-    def uniquePaths(self, m: int, n: int) -> int:
-        return int(fatorial(m+n-2)/(fatorial(m-1)*fatorial(n-1)))
-        
+print(fatorial(5))
