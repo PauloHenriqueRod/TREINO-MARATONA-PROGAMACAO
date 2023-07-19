@@ -4,7 +4,7 @@ def longestPalindrome(s: str) -> int:
     impar = False
     for letra in palavras_sett:
         quant = s.count(letra)
-        if s.count(letra)%2 == 0:
+        if quant%2 == 0:
             cont += quant
         else:
             impar = True
