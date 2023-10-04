@@ -1,5 +1,5 @@
-def camJump(nums):
-    if len(nums) == 0:
+def canJump(nums: list[int]) -> bool:
+    if len(nums) == 0 or len(nums)==1:
         return True
     maximo = 0
     tot = len(nums)
@@ -12,5 +12,6 @@ def camJump(nums):
             return True
         maximo -= 1
     return True
+        
 
-print(camJump([2,0,0]))
+print(canJump([2,0,0]))
