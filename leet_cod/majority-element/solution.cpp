@@ -1,11 +1,13 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-#include <string>
+
+using namespace std;
+using namespace __gnu_pbds;
 
 int majorityElement(vector<int>& nums) {
     sort(nums.begin(), nums.end());
-    int a = nums1.size();
+    int a = nums.size();
     int m = a/2;
     return nums[m];
     }
