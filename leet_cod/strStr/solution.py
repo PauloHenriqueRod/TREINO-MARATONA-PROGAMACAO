@@ -6,4 +6,5 @@ def strStr(haystack: str, needle: str) -> int:
         if haystack[i:tam+i] == needle:
             return i
     return - 1
+
 print(strStr("abc", "c"))
