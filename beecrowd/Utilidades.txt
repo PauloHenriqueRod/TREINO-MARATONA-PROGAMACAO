@@ -4,3 +4,4 @@ ex1021 = Imprecisão dos números FLOAT
 ex1050 = dicionario
 ex 2165 = strings
 ex 1093 - A ruina do jogador
+ex1028 = algoritmo de euclides para calcular mmc
