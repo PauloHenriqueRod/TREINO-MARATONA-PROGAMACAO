@@ -1,3 +1,9 @@
+#include <iostream>
+#include <cmath>
+#include <stdio.h>
+
+using namespace std;
+
 int calculo_mmc(int a, int b){ /* Algoritmo de Euclides para cálculo de mmc O(log(n))*/
     while (b) {
         int temp = a;
@@ -22,4 +28,13 @@ bool eh_primo(int n){
         i = i+6;
     }
     return true;
+}
+
+int contarDigitos(int numero) {
+    if (numero == 0) {
+        return 1;
+    }
+
+    int quantidade_de_digitos = static_cast<int>(log10(std::abs(numero))) + 1; /*Precisa da biblioteca cmath*/
+    return quantidade_de_digitos;
 }
