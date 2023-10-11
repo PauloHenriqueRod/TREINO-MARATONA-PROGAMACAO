@@ -31,6 +31,7 @@ bool eh_primo(int n){
 }
 
 int contarDigitos(int numero) {
+    /*Função que conta o número de digitos de uma função*/
     if (numero == 0) {
         return 1;
     }
