@@ -37,3 +37,11 @@ def eh_primo(n): # Número primo ou não
             return False
         i += 6
     return True
+
+def contar_digitos(numero):
+    """Função que conta o número de dígitos de um número inteiro"""
+    if numero == 0:
+        return 1
+
+    quantidade_de_digitos = int(math.log10(abs(numero)) + 1)
+    return quantidade_de_digitos
