@@ -45,3 +45,23 @@ def contar_digitos(numero):
 
     quantidade_de_digitos = int(math.log10(abs(numero)) + 1)
     return quantidade_de_digitos
+
+def area_triangulo(a,b,c):
+    """
+    Área do triângulo dado os lados
+    """
+    p = a+b+c
+    area = ((p-a)*(p-b)*(p-c)*p)**(1/2)
+    return area
+
+def circulo_circuinscrito(a,b,c,pi):
+    p = a+b+c
+    areaT = ((p-a)*(p-b)*(p-c)*p)**(1/2)
+    R = (a*b*c)/(4*areaT)
+    return pi*(R**2)
+
+def circulo_inscrito(a,b,c,pi):
+    p = a+b+c
+    areaT = ((p-a)*(p-b)*(p-c)*p)**(1/2)
+    r = areaT/p
+    return pi*(r**2)
