@@ -25,6 +25,10 @@ def calcular_mdc(numero1, numero2): # Algoritmo de Euclides
         numero1, numero2 = numero2, numero1 % numero2
     return numero1
 
+def calcular_mmc(numero1, numero2):
+    x = calcular_mdc(numero1=numero1, numero2=numero2)
+    return numero1*numero2 // x
+
 def eh_primo(n): # Número primo ou não
     if n <= 1:
         return False
