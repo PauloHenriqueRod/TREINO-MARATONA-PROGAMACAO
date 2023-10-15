@@ -1,8 +1,9 @@
-#include <iostream>
-#include <cmath>
-#include <stdio.h>
-
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
+using namespace __gnu_pbds;
+
 
 int calculo_mmc(int a, int b){ /* Algoritmo de Euclides para cálculo de mmc O(log(n))*/
     while (b) {
@@ -38,4 +39,30 @@ int contarDigitos(int numero) {
 
     int quantidade_de_digitos = static_cast<int>(log10(std::abs(numero))) + 1; /*Precisa da biblioteca cmath*/
     return quantidade_de_digitos;
+}
+
+int qtdDiv(long long n){
+    int res = 0;
+    for(int i=1; i<=n/i; i++){
+        if(n%i == 0){
+            if(i*1LL*i == n)
+                res = res + 1;
+            else
+                res = res + 2;
+        }
+    }
+    return res;
+}
+
+vector<long long> fatores(long long n){
+    vector<long long> res;
+    for(int i=2; i<=n/i; i++){
+        while(n%i == 0){
+            res.push_back(i);
+            n = n/i;
+        }
+    }
+    if(n > 1)
+        res.push_back(n);
+    return res;
 }
