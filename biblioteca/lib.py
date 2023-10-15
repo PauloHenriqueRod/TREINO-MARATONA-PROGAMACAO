@@ -1,4 +1,5 @@
 from math import ceil
+import math
 
 def ruina_do_jogador(inicio: int, sucesso:int, p:float, quant: int) -> float:
     """
@@ -45,6 +46,7 @@ def contar_digitos(numero):
 
     quantidade_de_digitos = int(math.log10(abs(numero)) + 1)
     return quantidade_de_digitos
+
 
 def area_triangulo(a,b,c):
     """
