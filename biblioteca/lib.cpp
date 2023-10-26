@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
-using namespace __gnu_pbds;
 
 
 int calculo_mmc(int a, int b){ /* Algoritmo de Euclides para cálculo de mmc O(log(n))*/
@@ -66,3 +63,8 @@ vector<long long> fatores(long long n){
         res.push_back(n);
     return res;
 }
+
+double modulo(int x, int y){
+    return sqrt(x*x + y*y);
+}
+
