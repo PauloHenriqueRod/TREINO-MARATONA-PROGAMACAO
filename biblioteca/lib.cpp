@@ -77,5 +77,9 @@ pair<int, int> vetor_ligante(int x1, int x2, int y1, int y2){
 }
 
 double angulo_vetor(int x, int y){
-    return (double) y/x;
+    return (double) y/ (double) x;
+}
+
+double projecao(int x1, int x2, int y1, int y2){
+    
 }
