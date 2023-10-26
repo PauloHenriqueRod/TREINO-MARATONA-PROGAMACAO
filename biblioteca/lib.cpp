@@ -80,6 +80,51 @@ double angulo_vetor(int x, int y){
     return (double) y/ (double) x;
 }
 
-double projecao(int x1, int x2, int y1, int y2){
-    
+int prodEscalar(int x1, int x2, int y1, int y2){
+    return x1*x2 + y1*y2;
+}
+
+int prodVetorial(int x1, int x2, int y1, int y2){
+    return x1*y2 - x2*y1;
+}
+
+double tamProjecao(int x1, int x2, int y1, int y2){
+    return prodEscalar(x1, x2, y1, y2)/modulo(x2, y2);
+}
+
+
+// Vetor de projeção de A em B
+// Pra usar isso os pontos devem ser em double
+pair<double, double> vetProjecao(double x1, double x2, double y1, double y2){
+    pair<double, double> novoVetor;
+    novoVetor.first = (x2/modulo(x2, y2))*tamProjecao(x1,x2,y1,x2);
+    novoVetor.second = (y2/modulo(x2, y2))*tamProjecao(x1,x2,y1,x2);
+    return novoVetor;
+}
+const int AGUDO = 1, RETO = 0, OBTUSO = -1; //<90, =90, >90
+
+int tipoAngulo(int x1, int x2, int y1, int y2){
+    int res = prodEscalar(x1, x2, y1, y2);
+    if(res>0)
+        return AGUDO;
+    if(res == 0)
+        return RETO;
+    return OBTUSO;
+}
+
+int areaPalalelogramo(int x1, int x2, int y1, int y2){
+    // Função que encontra a área formada pela projeção dos 2 vetores
+    return abs(prodVetorial(x1,x2,y1,y2));
+}
+
+double areaTriangulo(int x1, int x2, int y1, int y2){
+    return (double) areaPalalelogramo(x1, x2, y1, y2)/2.0;
+}
+
+bool perpedicular(int x1, int x2, int y1, int y2){
+    return prodEscalar(x1, x2, y1, y2) == 0;
+}
+
+bool paralelo(int x1, int x2, int y1, int y2){
+    return prodVetorial(x1, x2, y1, y2) == 0;
 }
