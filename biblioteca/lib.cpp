@@ -68,3 +68,14 @@ double modulo(int x, int y){
     return sqrt(x*x + y*y);
 }
 
+pair<int, int> vetor_ligante(int x1, int x2, int y1, int y2){
+    // Função para encontrar o vetor que vai de "1" para "2"
+    pair<int, int> vetor;
+    vetor.first = x1-x2;
+    vetor.second = y1-y2;
+    return vetor;
+}
+
+double angulo_vetor(int x, int y){
+    return (double) y/x;
+}
