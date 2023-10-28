@@ -143,8 +143,8 @@ double areaTriangulo(int x1, int x2, int y1, int y2){
     return (double) areaPalalelogramo(x1, x2, y1, y2)/2.0;
 }
 
-bool perpedicular(int x1, int x2, int y1, int y2){
-    return prodEscalar(x1, x2, y1, y2) == 0;
+bool perpedicular(ponto p, ponto q){
+    return prodEscalar(p.x, q.x, p.y, q.y) == 0;
 }
 
 bool paralelo(int x1, int x2, int y1, int y2){
@@ -170,7 +170,7 @@ double dist_p1(ponto p1, ponto p2, ponto q){
     return num/den;
 }
 
-// Calcula a area de um poligono p
+// Calcula a area de um poligono p, com a formula de gauss
 double area_polygon(poligono p){
     int n = p.size();
     double area = 0.0;
@@ -181,6 +181,11 @@ double area_polygon(poligono p){
     area /= 2.0;
     return abs(area);
 }
+//produto vetorial entre 3 vetores
+
+
+
+// Teste esquerda
 
 
 
