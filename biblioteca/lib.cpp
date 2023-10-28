@@ -1,5 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
+// para definir pontos
+#define x first
+#define y second
+// para definir linhas
+#define a_num first.first
+#define a_denm first.second
+#define b second
+
+/*
+setprecision = numero de casas flutuantes
+fixed = fixa a notação que vai ser impressa
+Para fazer comparações de números double utilizar o EPS(número bem pequeno)
+abs(x) < EPS
+abs(x-y) < EPS
+const double pi = acos(-1) 
+*/
+
+typedef pair<int,int> ponto;
+typedef pair<pair<int, int>, int> linha;
+typedef vector<ponto> poligono;
 
 
 int calculo_mmc(int a, int b){ /* Algoritmo de Euclides para cálculo de mmc O(log(n))*/
@@ -81,6 +101,7 @@ double angulo_vetor(int x, int y){
 }
 
 int prodEscalar(int x1, int x2, int y1, int y2){
+    // Prod interno
     return x1*x2 + y1*y2;
 }
 
@@ -89,6 +110,7 @@ int prodVetorial(int x1, int x2, int y1, int y2){
 }
 
 double tamProjecao(int x1, int x2, int y1, int y2){
+    // Calcula o tamanho da projeção de a em b
     return prodEscalar(x1, x2, y1, y2)/modulo(x2, y2);
 }
 
@@ -128,3 +150,41 @@ bool perpedicular(int x1, int x2, int y1, int y2){
 bool paralelo(int x1, int x2, int y1, int y2){
     return prodVetorial(x1, x2, y1, y2) == 0;
 }
+
+// Encontra a equação da reta que passa pelos pontos p e q
+pair<double, double> equacao_reta(ponto p, ponto q){
+    double a = (p.y-q.y) / (p.x-q.x);
+    double b = p.y - (a*p.x);
+    return {a, b};
+}
+
+// Lei dos cossenos para encontrar o angulo que forma duas retas
+double angle_a(int a, int b, int c){
+    return acos(double(a*a - b*b - c*c)/double(-2*b*c));
+}
+
+// Distancia ponto e reta(que passa pelos pontos p1 e p2)
+double dist_p1(ponto p1, ponto p2, ponto q){
+    double num = abs((p2.y-p1.y)*q.x - (p2.x-p1.x)*q.y + p2.x*p1.y - p2.y*p1.x);
+    double den = sqrt((p2.y-p1.y)*(p2.y-p1.y) + (p2.x-p1.x)*(p2.x-p1.x));
+    return num/den;
+}
+
+// Calcula a area de um poligono p
+double area_polygon(poligono p){
+    int n = p.size();
+    double area = 0.0;
+    for (int i = 0; i<n ; i++){
+        ponto p1 = p[i], p2 = p[(i+1)%n];
+        area += (p2.x+p1.x)*(p2.y-p1.y);
+    }
+    area /= 2.0;
+    return abs(area);
+}
+
+
+
+
+
+
+
