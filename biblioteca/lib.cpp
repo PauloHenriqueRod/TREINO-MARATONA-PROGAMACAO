@@ -84,49 +84,51 @@ vector<long long> fatores(long long n){
     return res;
 }
 
-double modulo(int x, int y){
-    return sqrt(x*x + y*y);
+double modulo(ponto p){
+    return sqrt(p.x*p.x + p.y*p.y);
 }
 
-pair<int, int> vetor_ligante(int x1, int x2, int y1, int y2){
+ponto vetor_ligante(ponto p, ponto q){
     // Função para encontrar o vetor que vai de "1" para "2"
-    pair<int, int> vetor;
-    vetor.first = x1-x2;
-    vetor.second = y1-y2;
+    ponto vetor;
+    vetor.x = p.x-q.x;
+    vetor.y = p.y-q.y;
     return vetor;
 }
 
-double angulo_vetor(int x, int y){
-    return (double) y/ (double) x;
+double angulo_vetor(ponto p){
+    return (double) p.y/ (double) p.x;
 }
 
-int prodEscalar(int x1, int x2, int y1, int y2){
+int prodEscalar(ponto p, ponto q){
     // Prod interno
-    return x1*x2 + y1*y2;
+    return p.x*q.x + p.y*q.y;
 }
 
-int prodVetorial(int x1, int x2, int y1, int y2){
-    return x1*y2 - x2*y1;
+int prodVetorial(ponto p, ponto q){
+    return p.x*q.y - q.x*p.y;
 }
 
-double tamProjecao(int x1, int x2, int y1, int y2){
+double tamProjecao(ponto p, ponto q){
     // Calcula o tamanho da projeção de a em b
-    return prodEscalar(x1, x2, y1, y2)/modulo(x2, y2);
+    return prodEscalar(p, q)/modulo(q);
 }
 
 
 // Vetor de projeção de A em B
 // Pra usar isso os pontos devem ser em double
+/*
 pair<double, double> vetProjecao(double x1, double x2, double y1, double y2){
     pair<double, double> novoVetor;
     novoVetor.first = (x2/modulo(x2, y2))*tamProjecao(x1,x2,y1,x2);
     novoVetor.second = (y2/modulo(x2, y2))*tamProjecao(x1,x2,y1,x2);
     return novoVetor;
 }
+*/
 const int AGUDO = 1, RETO = 0, OBTUSO = -1; //<90, =90, >90
 
-int tipoAngulo(int x1, int x2, int y1, int y2){
-    int res = prodEscalar(x1, x2, y1, y2);
+int tipoAngulo(ponto p, ponto q){
+    int res = prodEscalar(p, q);
     if(res>0)
         return AGUDO;
     if(res == 0)
@@ -134,21 +136,21 @@ int tipoAngulo(int x1, int x2, int y1, int y2){
     return OBTUSO;
 }
 
-int areaPalalelogramo(int x1, int x2, int y1, int y2){
+int areaPalalelogramo(ponto p, ponto q){
     // Função que encontra a área formada pela projeção dos 2 vetores
-    return abs(prodVetorial(x1,x2,y1,y2));
+    return abs(prodVetorial(p, q));
 }
 
-double areaTriangulo(int x1, int x2, int y1, int y2){
-    return (double) areaPalalelogramo(x1, x2, y1, y2)/2.0;
+double areaTriangulo(ponto p, ponto q){
+    return (double) areaPalalelogramo(p, q)/2.0;
 }
 
 bool perpedicular(ponto p, ponto q){
-    return prodEscalar(p.x, q.x, p.y, q.y) == 0;
+    return prodEscalar(p, q) == 0;
 }
 
-bool paralelo(int x1, int x2, int y1, int y2){
-    return prodVetorial(x1, x2, y1, y2) == 0;
+bool paralelo(ponto p, ponto q){
+    return prodVetorial(p, q) == 0;
 }
 
 // Encontra a equação da reta que passa pelos pontos p e q
@@ -186,9 +188,22 @@ double area_polygon(poligono p){
 
 
 // Teste esquerda
+int e_esquerda(ponto a, ponto b, ponto c){
+    int det = (b.x-a.x)*(c.y-a.y) - (c.x-a.x)*(b.y-a.y);
+    if (det>0) return 1; // c esta a esquerda
+    if (det<0) return -1; // c esta a direita
+    return 0; // pontos colineares
+}
 
-
-
+// checa se o ponto q está dentro do polígomo
+int ta_dentro(ponto p, poligono pol){
+    int n = pol.size();
+    for (int i = 0; i<n ; i++){
+        if(e_esquerda(pol[i], pol[(i+1)%n], p) == -1)
+            return false;
+    }
+    return true;
+}
 
 
 
