@@ -7,6 +7,31 @@ using namespace std;
 #define a_num first.first
 #define a_denm first.second
 #define b second
+#define ll long long
+
+// Struct de pontos para usar em certas funções
+struct pt { // ponto
+	int x, y;
+	pt(int x_ = 0, int y_ = 0) : x(x_), y(y_) {}
+	bool operator < (const pt p) const {
+		if (x != p.x) return x < p.x;
+		return y < p.y;
+	}
+	bool operator == (const pt p) const {
+		return x == p.x and y == p.y;
+	}
+	pt operator + (const pt p) const { return pt(x+p.x, y+p.y); }
+	pt operator - (const pt p) const { return pt(x-p.x, y-p.y); }
+	pt operator * (const int c) const { return pt(x*c, y*c); }
+    // produto escalar
+	ll operator * (const pt p) const { return x*(ll)p.x + y*(ll)p.y; }
+	//produto vetorial
+    ll operator ^ (const pt p) const { return x*(ll)p.y - y*(ll)p.x; }
+	friend istream& operator >> (istream& in, pt& p) {
+		return in >> p.x >> p.y;
+	}
+};
+
 
 /*
 setprecision = numero de casas flutuantes
@@ -195,14 +220,24 @@ int e_esquerda(ponto a, ponto b, ponto c){
     return 0; // pontos colineares
 }
 
-// checa se o ponto q está dentro do polígomo
-int ta_dentro(ponto p, poligono pol){
-    int n = pol.size();
-    for (int i = 0; i<n ; i++){
-        if(e_esquerda(pol[i], pol[(i+1)%n], p) == -1)
-            return false;
-    }
-    return true;
+// se o ponto ta dentro do poligono: retorna 0 se ta fora,
+// 1 se ta no interior e 2 se ta na borda
+int inpol(vector<pt>& v, pt p) { // O(n)
+	int qt = 0;
+	for (int i = 0; i < v.size(); i++) {
+		if (p == v[i]) return 2;
+		int j = (i+1)%v.size();
+		if (p.y == v[i].y and p.y == v[j].y) {
+			if ((v[i]-p)*(v[j]-p) <= 0) return 2;
+			continue;
+		}
+		bool baixo = v[i].y < p.y;
+		if (baixo == (v[j].y < p.y)) continue;
+		auto t = (p-v[i])^(v[j]-v[i]);
+		if (!t) return 2;
+		if (baixo == (t > 0)) qt += baixo ? 1 : -1;
+	}
+	return qt != 0;
 }
 
 
