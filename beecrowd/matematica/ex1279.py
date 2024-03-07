@@ -18,5 +18,6 @@ while True:
             aux += 1
         if aux == 0:
             print('This is an ordinary year.')
+        print()
     except EOFError:
         break
