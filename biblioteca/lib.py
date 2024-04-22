@@ -95,3 +95,18 @@ def wagner_fischer(str1, str2):
                              dist[i - 1][j - 1] + cost)  # Substituição ou match
     
     return dist[m][n]
+
+# Algoritmo para contagem de primos em dado intervalo
+# Complex: O(nlog(log(n)))
+def countPrimes(n):
+    if n <= 1:
+        return 0
+
+    prime = [1]*n
+    prime[0] = prime[1] = 0 # prime[0] = 0 and prime[1] = 1
+
+    for i in range(2,int(n**0.5) + 1):
+        if prime[i] == 1:
+            for j in range(i**2, n, i):
+                prime[j] = 0
+    return sum(prime)
