@@ -4,13 +4,9 @@ for i in range(x):
     matriz.append([int(n) for n in input().split()])
 certo = True
 linha_coluna = []
-matriz_aux = []
 
-for i in range(x):
-    matriz_2 = []
-    for j in range(y):
-        matriz_2.append(0)
-    matriz_aux.append(matriz_2)
+matriz_aux = matriz_aux = [[0] * y for _ in range(x)]
+
 total = 0
 for i in range(x-1):
     for j in range(y-1):
