@@ -13,20 +13,15 @@ def count_primos(n, m):
         m = aux
     if n <= 1:
         return 0
-    total = n+1
+
     prime = [1]*(n+1)
     prime[0] = prime[1] = 0 # prime[0] = 0 and prime[1] = 1
-    total = total - 2
 
     for i in range(2,int(n**0.5) + 1):
         if prime[i] == 1:
-            if i < m:
-                total -= 1
             for j in range(i**2, n+1, i):
-                if prime[j] == 1:
-                    total -= 1
                 prime[j] = 0
-    return total
+    return sum(prime[m:n+1])
     
 n, m = [int(x) for x in input().split()]
 x = abs(n-m)
